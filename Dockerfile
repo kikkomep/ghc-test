@@ -20,7 +20,7 @@ WORKDIR /app
 RUN python3 -m venv /opt/venv
 
 # Activate the virtual environment and install the required packages
-RUN --mount=type=bind,source=/app/requirements.txt,target=/app/requirements.txt \ 
+RUN --mount=type=bind,source=./requirements.txt,target=/app/requirements.txt \ 
     --mount=type=cache,target=/root/.cache/pip \
     /bin/bash -c "source /opt/venv/bin/activate && \
     pip install --upgrade pip && \
