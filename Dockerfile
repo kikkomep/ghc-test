@@ -13,7 +13,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     build-essential \
     libssl-dev \
     libffi-dev \
-    python3-dev
+    python3-dev \
+    libxml2-dev 
 
 # Create a directory for the application
 WORKDIR /app
