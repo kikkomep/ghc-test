@@ -1,0 +1,28 @@
+FROM ubuntu:22.04
+
+# Install dependencies
+RUN apt-get update && \
+    apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-venv \
+    git \
+    curl \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    python3-dev
+
+# Create a directory for the application
+WORKDIR /app
+
+# Create a virtual environment
+RUN python3 -m venv /opt/venv
+
+# Copy the application code to the container
+COPY requirements.txt /app/requirements.txt
+
+# Activate the virtual environment and install the required packages
+RUN /bin/bash -c "source /opt/venv/bin/activate && \
+    pip install --upgrade pip && \
+    pip install -r requirements.txt"
