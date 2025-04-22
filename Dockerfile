@@ -23,6 +23,7 @@ RUN python3 -m venv /opt/venv
 COPY requirements.txt /app/requirements.txt
 
 # Activate the virtual environment and install the required packages
-RUN /bin/bash -c "source /opt/venv/bin/activate && \
+RUN  --mount=type=cache,target=/root/.cache/pip \
+    /bin/bash -c "source /opt/venv/bin/activate && \
     pip install --upgrade pip && \
     pip install -r requirements.txt"
